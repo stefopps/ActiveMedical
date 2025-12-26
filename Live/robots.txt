@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sensitive-accessibility-400868.framer.app/sitemap.xml
