@@ -2866,6 +2866,30 @@
 </div>
 	<!-- Start of bodyEnd -->
     
+    <!-- Point all internal links to home until other pages are ready -->
+    <script>
+(function() {
+  function pointInternalLinksToHome() {
+    var main = document.getElementById('main');
+    if (!main) return;
+    var links = main.querySelectorAll('a[href]');
+    for (var i = 0; i < links.length; i++) {
+      var a = links[i];
+      var h = (a.getAttribute('href') || '').trim();
+      if (!h) continue;
+      if (h === '#' || h === '#/') continue;
+      if (/^(https?:|mailto:|tel:|\/\/)/i.test(h)) continue;
+      a.setAttribute('href', '#');
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', pointInternalLinksToHome);
+  } else {
+    pointInternalLinksToHome();
+  }
+  setTimeout(pointInternalLinksToHome, 800);
+})();
+    </script>
     <!-- End of bodyEnd -->
 </body>
 </html>
