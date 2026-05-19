@@ -22,6 +22,13 @@ const path = require('path');
   console.log('Waiting 5 seconds before starting...');
   await page.waitForTimeout(5000);
 
+  console.log('Log in in the opened browser, then tell me you are done.');
+  console.log('The script is waiting here until I press Enter in this terminal.');
+  await new Promise((resolve) => {
+    process.stdin.resume();
+    process.stdin.once('data', resolve);
+  });
+
   // CREATE OUTPUT FOLDER
   const outputDir = path.join(__dirname, 'ccs_screenshots');
 
